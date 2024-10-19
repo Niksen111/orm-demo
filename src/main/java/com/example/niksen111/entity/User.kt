@@ -17,7 +17,7 @@ class User(
         val email: String,
 
         @Column(name= "created_at", nullable = false)
-        val createdAt: LocalDateTime
+        val createdAt: LocalDateTime = LocalDateTime.now()
 ) {
-    constructor() : this(0, "", "", LocalDateTime.now())
+    constructor() : this(name = "", email = "")
 }
