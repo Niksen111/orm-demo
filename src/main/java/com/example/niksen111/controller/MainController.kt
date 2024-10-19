@@ -8,6 +8,7 @@ import com.example.niksen111.repository.UserRepository
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -20,7 +21,12 @@ class MainController(
     private val orderProductRepository: OrderProductRepository
 ) {
     @GetMapping("/users")
-   fun getAllUsers(): ResponseEntity<List<User>> {
-       return ResponseEntity(userRepository.findAll(), HttpStatus.OK)
-   }
+    fun getAllUsers(): ResponseEntity<List<User>> {
+        return ResponseEntity(userRepository.findAll(), HttpStatus.OK)
+    }
+
+    @PostMapping("/addUser")
+    fun addUser(user: User): ResponseEntity<User> {
+        return ResponseEntity(userRepository.save(user), HttpStatus.OK);
+    }
 }

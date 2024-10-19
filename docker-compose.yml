@@ -12,6 +12,22 @@ services:
     networks:
       - app-network
 
+  orm-demo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: orm-demo-app
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/orm_demo_db
+      SPRING_DATASOURCE_USERNAME: username
+      SPRING_DATASOURCE_PASSWORD: password
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
 volumes:
   db_data:
 

@@ -13,6 +13,7 @@
     <groupId>org.example.niksen111</groupId>
     <artifactId>orm-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <java.version>17</java.version>
@@ -95,23 +96,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-<!--            <plugin>-->
-<!--                <groupId>org.jetbrains.kotlin</groupId>-->
-<!--                <artifactId>kotlin-maven-allopen</artifactId>-->
-<!--                <version>${kotlin.version}</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>spring</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <annotation>org.springframework.stereotype.Component</annotation>-->
-<!--                    <annotation>org.springframework.boot.autoconfigure.SpringBootApplication</annotation>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 </project>
