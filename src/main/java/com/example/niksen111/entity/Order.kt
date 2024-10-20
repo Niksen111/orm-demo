@@ -18,4 +18,5 @@ class Order(
         val orderDate: LocalDateTime = LocalDateTime.now()
 ) {
         constructor() : this(user = User())
+        constructor(user: User) : this(user = user, orderDate = LocalDateTime.now())
 }
