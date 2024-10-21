@@ -6,6 +6,7 @@ import com.example.niksen111.repository.OrderProductRepository
 import com.example.niksen111.repository.OrderRepository
 import com.example.niksen111.repository.ProductRepository
 import com.example.niksen111.service.OrderService
+import com.example.niksen111.vo.OrderWithUser
 import com.example.niksen111.vo.ProductWithQuantity
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -48,6 +49,17 @@ open class OrderServiceImpl(
                 it.product.name,
                 it.product.price,
                 it.quantity)
+        }
+    }
+
+    override fun getOrdersAndUsersNPlusOneProblem(): List<OrderWithUser> {
+        val orders = orderRepository.findAll()
+        return orders.map { order ->
+            OrderWithUser(
+                order.id,
+                order.user.name,
+                order.user.email
+            )
         }
     }
 }

@@ -5,6 +5,7 @@ import com.example.niksen111.entity.User
 import com.example.niksen111.repository.UserRepository
 import com.example.niksen111.service.OrderService
 import com.example.niksen111.vo.OrderProductRequest
+import com.example.niksen111.vo.OrderWithUser
 import com.example.niksen111.vo.ProductWithQuantity
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -23,7 +24,7 @@ class MainController(
 
     @PostMapping("/addUser")
     fun addUser(user: User): ResponseEntity<User> {
-        return ResponseEntity(userRepository.save(user), HttpStatus.OK);
+        return ResponseEntity(userRepository.save(user), HttpStatus.OK)
     }
 
     @GetMapping("/users/{id}")
@@ -66,5 +67,10 @@ class MainController(
     @GetMapping("/orders/{orderId}/getDetailed")
     fun getOrderDetailed(@PathVariable orderId: Long): ResponseEntity<List<ProductWithQuantity>> {
         return ResponseEntity.ok(orderService.getProductsByOrderId(orderId))
+    }
+
+    @GetMapping("/ordersWithUsersNP1")
+    fun getOrdersWithUsersNP1(): ResponseEntity<List<OrderWithUser>> {
+        return ResponseEntity.ok(orderService.getOrdersAndUsersNPlusOneProblem())
     }
 }
